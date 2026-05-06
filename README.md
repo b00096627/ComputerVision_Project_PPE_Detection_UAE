@@ -1,18 +1,18 @@
 # Data-Centric PPE Detection in Extreme UAE Environments
-### YOLOv8m vs RT-DETR-L · Two-Phase Study
+### YOLOv8m vs RT-DETR-L, Two-Phase Study
 
-**Dewansh Agrawal · Ahmed Alnuaimi · Abdullah Siddiqui**  
-College of Engineering (CEN) — American University of Sharjah
+**Dewansh Agrawal, Ahmed Alnuaimi, Abdullah Siddiqui**  
+College of Engineering (CEN) - American University of Sharjah
 
 ---
 
 ## Overview
 
-This project investigates automated PPE (Personal Protective Equipment) detection on UAE construction sites using a **two-phase, data-centric methodology**. Standard models fail under Gulf conditions — Khamseen sandstorms, UV bleaching, heat shimmer, and intense directional shadows. Rather than changing model architectures, we systematically engineered the data to fix what the models could not learn.
+This project investigates automated PPE (Personal Protective Equipment) detection on UAE construction sites using a **two-phase, data-centric methodology**. Standard models fail under harsh Gulf conditions — Khamseen sandstorms, UV bleaching, heat shimmer, and intense directional shadows. Rather than changing model architectures, we systematically engineered the data to fix what the models could not learn.
 
-**Phase 1** trains YOLOv8m and RT-DETR-L on a Roboflow construction site dataset with custom UAE weather augmentations, then stress-tests both models on empty desert backgrounds. Both hallucinate PPE on bare scaffolding and sand — a direct consequence of data starvation and zero negative training examples.
+**Phase 1** trains YOLOv8m and RT-DETR-L on a Roboflow construction site dataset with custom UAE weather augmentations, then stress-tests both models on empty desert backgrounds. Both hallucinate PPE on bare scaffolding and sand, a direct consequence of data starvation and zero negative training examples.
 
-**Phase 2** fuses the Mendeley SHWD dataset (~5,000 helmet images), injects 129 explicit background images with empty labels, and doubles the training set via offline UAE augmentation to produce a 12,274-image Mega-Dataset. The result: **1.000 recall on NO-Hardhat detection** on both models — every bare-head violation correctly flagged.
+**Phase 2** fuses the Mendeley SHWD dataset (~5,000 helmet images), injects 129 explicit background images with empty labels, and doubles the training set via augmentation to produce a 12,274-image Mega-Dataset. The result: **1.000 recall on NO-Hardhat detection** on both models — every bare-head violation correctly flagged.
 
 ---
 
@@ -86,7 +86,7 @@ The entire pipeline runs from **`PPE_Detection_UAE.ipynb`**.
 | Notebook section | What it does |
 |---|---|
 | Setup | Mount Drive, clone repo, install deps |
-| Dataset | Download Roboflow dataset (skips if on Drive) |
+| Dataset | Download Roboflow dataset |
 | Preprocessing | Validate images, class distribution chart |
 | Augmentation | UAE pipeline demo → generate 1,500 images → quality filter → copy to train |
 | Phase 1 Training | YOLOv8m (~25 min on L4) + RT-DETR-L (~90 min) |

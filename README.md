@@ -8,7 +8,7 @@ College of Engineering (CEN) - American University of Sharjah
 
 ## Overview
 
-This project investigates automated PPE (Personal Protective Equipment) detection on UAE construction sites using a **two-phase, data-centric methodology**. Standard models fail under harsh Gulf conditions — Khamseen sandstorms, UV bleaching, heat shimmer, and intense directional shadows. Rather than changing model architectures, we systematically engineered the data to fix what the models could not learn.
+This project investigates automated PPE (Personal Protective Equipment) detection on UAE construction sites using a **two-phase, data-centric methodology**. Standard models fail under harsh Gulf conditions, Khamseen sandstorms, UV bleaching, heat shimmer, and intense directional shadows. Rather than changing model architectures, we systematically engineered the data to fix what the models could not learn.
 
 **Phase 1** trains YOLOv8m and RT-DETR-L on a Roboflow construction site dataset with custom UAE weather augmentations, then stress-tests both models on empty desert backgrounds. Both hallucinate PPE on bare scaffolding and sand, a direct consequence of data starvation and zero negative training examples.
 
@@ -95,55 +95,7 @@ The entire pipeline runs from **`PPE_Detection_UAE.ipynb`**.
 | Phase 2 Training | Both models on 12,274-image corpus |
 | Phase 2 Evaluation | Out-of-domain test + Phase 1 vs 2 delta table |
 
----
-
-## How to Run — Local
-
-```bash
-git clone https://github.com/YOUR_USERNAME/ppe-detection.git
-cd ppe-detection/ppe-detection
-
-python -m venv venv
-source venv/bin/activate        # Linux/macOS
-# venv\Scripts\activate         # Windows
-
-pip install -r requirements.txt
-```
-
-**Download dataset** (free API key at [app.roboflow.com](https://app.roboflow.com) → Settings → API):
-```bash
-python data/download_dataset.py \
-    --api-key  YOUR_ROBOFLOW_API_KEY \
-    --workspace roboflow-universe-projects \
-    --project   construction-site-safety \
-    --version   1
-```
-
-**Full pipeline:**
-```bash
-python src/preprocess.py --data configs/dataset.yaml
-
-python src/augment.py --data configs/dataset.yaml --mode augment --n-samples 1500
-
-python src/train.py --model yolo   --epochs 50 --imgsz 640 --batch 16 --device 0
-python src/train.py --model rtdetr --epochs 50 --imgsz 640 --batch 4  --device 0
-
-python src/evaluate.py \
-    --yolo-weights   runs/yolo/weights/best.pt \
-    --rtdetr-weights runs/rtdetr/weights/best.pt \
-    --data configs/dataset.yaml --device 0
-
-python src/compare.py \
-    --yolo-metrics   results/metrics/yolo_metrics.csv \
-    --rtdetr-metrics results/metrics/rtdetr_metrics.csv \
-    --yolo-weights   runs/yolo/weights/best.pt \
-    --rtdetr-weights runs/rtdetr/weights/best.pt \
-    --device 0
-```
-
----
-
-## UAE Augmentation Pipeline
+## Augmentation Pipeline
 
 Five custom transforms simulate Gulf construction site conditions (Albumentations 2.x):
 

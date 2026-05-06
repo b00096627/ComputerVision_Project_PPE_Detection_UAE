@@ -1,0 +1,18 @@
+path: /content/drive/.shortcut-targets-by-id/1L3rLSA5WEgqmQQN4KG18eflt-rOQPUZD/ppe-detection-v2/data/combined
+train: train/images
+val: valid/images
+test: test/images
+nc: 12
+names:
+  0: Hardhat
+  1: Gloves
+  2: Mask
+  3: NO-Hardhat
+  4: NO-Mask
+  5: NO-Safety Vest
+  6: Person
+  7: Safety Cone
+  8: Safety Vest
+  9: Ladder
+  10: Excavator
+  11: machinery

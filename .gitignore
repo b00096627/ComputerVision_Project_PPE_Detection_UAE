@@ -1,0 +1,47 @@
+# ── Model weights (too large for Git) ────────────────────────────────────────
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# ── Datasets (download via notebook or scripts) ───────────────────────────────
+ppe-detection/data/construction_site_safety/
+ppe-detection-v2/data/combined/
+ppe-detection-v2/data/shwd/
+
+# ── Training run weights (keep plots, exclude weights) ────────────────────────
+ppe-detection/runs/yolo/weights/
+ppe-detection/runs/rtdetr/weights/
+ppe-detection-v2/runs/yolo_phase2/weights/
+ppe-detection-v2/runs/rtdetr_phase2/weights/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+.venv/
+env/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Ultralytics cache ─────────────────────────────────────────────────────────
+*.cache
+runs/*/labels.cache
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── Secrets ───────────────────────────────────────────────────────────────────
+.env
+secrets.yaml

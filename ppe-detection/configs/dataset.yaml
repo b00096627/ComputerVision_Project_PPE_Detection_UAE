@@ -1,0 +1,16 @@
+names:
+- Hardhat
+- Mask
+- NO-Hardhat
+- NO-Mask
+- NO-Safety Vest
+- Person
+- Safety Cone
+- Safety Vest
+- machinery
+- vehicle
+nc: 10
+path: /content/drive/MyDrive/ppe-detection/data/construction_site_safety
+test: test/images
+train: train/images
+val: valid/images
